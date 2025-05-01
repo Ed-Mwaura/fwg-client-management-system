@@ -80,6 +80,22 @@ h2 {
     transform: scale(1.1);
 }
 
+.customer-home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 3rem;
+}
+
+.new-cust {
+    text-decoration: none;
+    background-color: green;
+    cursor: pointer;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    color: white;
+}
+
 /* DETAILS SECTION */
 .container {
     margin: 0 auto;
@@ -234,6 +250,15 @@ h2 {
     font-size: 19px;
     font-size: 19px;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.submit-add {
+    background: green;
+}
+
+.submit-cancel {
+    background: red;
 }
 
 .input-icons {

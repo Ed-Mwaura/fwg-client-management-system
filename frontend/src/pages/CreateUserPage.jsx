@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useUsers } from '../contexts/UsersContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreateUserPage = () => {
     const [formData, setFormData] = useState({
@@ -101,8 +101,10 @@ const CreateUserPage = () => {
                     </div>
                 </div>
                 <div className="submit-container">
-                    <div className="submit">Cancel</div>
-                    <div className="submit" onClick={handleSubmit}>
+                    <Link to="/" className="submit submit-cancel">
+                        Cancel
+                    </Link>
+                    <div className="submit submit-add" onClick={handleSubmit}>
                         Add
                     </div>
                 </div>

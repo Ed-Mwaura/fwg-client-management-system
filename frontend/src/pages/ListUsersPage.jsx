@@ -27,7 +27,12 @@ const ListUsersPage = () => {
         <>
             <div className="users">
                 {message && <div className="alert success">{message}</div>}
-                <h1>Our awesome clients</h1>
+                <div className="customer-home">
+                    <h1>Our awesome customers</h1>
+                    <Link className="new-cust" to="/customers/create">
+                        New Customer
+                    </Link>
+                </div>
                 <div className="all-users">
                     <UsersCard users={users} />
                 </div>
