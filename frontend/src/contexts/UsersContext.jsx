@@ -8,10 +8,20 @@ export const UsersProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    //TODO: fetch users from API
+    // fetch users from backend upon component mount
     useEffect(() => {
-        const fetchedUsers = fetchUsers();
-        setUsers(fetchedUsers);
+        const getCustomers = async () => {
+            try {
+                const customerList = await fetchUsers();
+                setUsers(customerList);
+            } catch (error) {
+                setError('Error fetching customers');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getCustomers();
     }, []);
 
     // simulate deleting users as filtering out selected user
