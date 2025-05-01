@@ -6,9 +6,10 @@ const UserDetailsCardRight = ({ user }) => {
     const { deleteUser } = useUsersData();
     const navigate = useNavigate();
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.preventDefault();
         deleteUser(user.id);
-        navigate('/');
+        navigate('/', { state: { message: 'Customer deleted successfully' } });
     };
     return (
         <>
@@ -43,7 +44,7 @@ const UserDetailsCardRight = ({ user }) => {
                     <Link to="/" className="back-btn">
                         Back
                     </Link>
-                    <Link to="/" onClick={handleDelete} className="delete-btn">
+                    <Link onClick={handleDelete} className="delete-btn">
                         Delete
                     </Link>
                 </div>

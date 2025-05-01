@@ -7,7 +7,7 @@ const UsersCard = ({ users }) => {
         <>
             {users.map((user) => {
                 return (
-                    <div className="user">
+                    <div key={user.id} className="user">
                         <img
                             src={user.image}
                             alt={`${user.first_name}'s avatar`}
@@ -18,7 +18,7 @@ const UsersCard = ({ users }) => {
                             </h4>
                             <Link
                                 className="details-btn"
-                                to={`/users/${user.id}`}
+                                to={`/customers/${user.id}`}
                             >
                                 Details
                             </Link>

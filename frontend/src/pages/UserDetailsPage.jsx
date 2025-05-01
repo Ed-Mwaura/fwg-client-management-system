@@ -15,6 +15,7 @@ const UserDetailsPage = () => {
         <>
             {selectedUser ? (
                 <div className="container">
+                    <h4>Details of awesome client </h4>
                     <UserDetailsCard user={selectedUser} />
                 </div>
             ) : (

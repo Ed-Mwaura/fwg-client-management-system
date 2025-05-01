@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './App.css';
@@ -14,15 +13,15 @@ const router = createBrowserRouter([
         errorElement: <NotFoundPage />,
     },
     {
-        path: '/users',
+        path: '/customers',
         element: <ListUsersPage />,
     },
     {
-        path: '/create',
+        path: '/customers/create',
         element: <CreateUserPage />,
     },
     {
-        path: '/users/:userId',
+        path: '/customers/:userId',
         element: <UserDetailsPage />,
     },
 ]);
