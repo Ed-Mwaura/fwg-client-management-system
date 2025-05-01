@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUsersData } from '../hooks/useUsers';
+import UsersCard from '../components/ListUsers/UsersCard';
 
 const ListUsersPage = () => {
     const { users, deleteUser, loading, error } = useUsersData();
@@ -8,15 +9,12 @@ const ListUsersPage = () => {
 
     return (
         <>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>
-                        <Link key={user.id} to={`/users/${user.id}`}>
-                            {user.first_name} {user.last_name}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <div className="users">
+                <h1>Our awesome clients</h1>
+                <div className="all-users">
+                    <UsersCard users={users} />
+                </div>
+            </div>
         </>
     );
 };

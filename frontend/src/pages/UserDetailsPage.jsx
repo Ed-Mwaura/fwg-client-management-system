@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useUsersData } from '../hooks/useUsers';
+import UserDetailsCard from '../components/UserDetails/UserDetailsCard';
 
 const UserDetailsPage = () => {
     const { users } = useUsersData();
@@ -13,11 +14,8 @@ const UserDetailsPage = () => {
     return (
         <>
             {selectedUser ? (
-                <div>
-                    Details for user {params.userId}
-                    <div>
-                        {selectedUser.first_name} {selectedUser.last_name}
-                    </div>
+                <div className="container">
+                    <UserDetailsCard user={selectedUser} />
                 </div>
             ) : (
                 <div>User not found</div>
