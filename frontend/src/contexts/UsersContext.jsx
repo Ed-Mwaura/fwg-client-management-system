@@ -8,7 +8,7 @@ export const UsersProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // fetch users from backend upon component mount and upon change of location
+    // fetch users from backend upon component mount
     useEffect(() => {
         const getCustomers = async () => {
             try {
@@ -25,8 +25,27 @@ export const UsersProvider = ({ children }) => {
     }, []);
 
     // simulate deleting users as filtering out selected user
-    const deleteUser = (id) => {
-        setUsers((prev) => prev.filter((u) => u.id !== parseInt(id)));
+    // const deleteUser = (id) => {
+    //     setUsers((prev) => prev.filter((u) => u.id !== parseInt(id)));
+    // };
+
+    // delete users from backend and update the UI
+    const deleteUser = async (id) => {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/customers/${id}`,
+                {
+                    method: 'DELETE',
+                }
+            );
+            if (response.status === 204) {
+                setUsers((prev) => prev.filter((u) => u.id !== parseInt(id)));
+            } else {
+                console.error('Failed to delete user');
+            }
+        } catch (error) {
+            console.log('Error deleting user: ', error);
+        }
     };
 
     // add new users
