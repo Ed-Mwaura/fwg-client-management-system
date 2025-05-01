@@ -28,7 +28,7 @@ export const createCustomer = (req, res) => {
         body += chunk.toString();
     });
 
-    req.oon('end', () =>{
+    req.on('end', () =>{
         try{
             const newUser = JSON.parse(body);
 

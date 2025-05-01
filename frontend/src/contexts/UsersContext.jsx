@@ -8,7 +8,7 @@ export const UsersProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // fetch users from backend upon component mount. Runs only once upon component mount
+    // fetch users from backend upon component mount and upon change of location
     useEffect(() => {
         const getCustomers = async () => {
             try {
@@ -30,7 +30,7 @@ export const UsersProvider = ({ children }) => {
     };
 
     // add new users
-    const addUser = (user) => {
+    const addUser = async (user) => {
         const newUserId =
             users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1;
         const newUser = {
@@ -38,7 +38,24 @@ export const UsersProvider = ({ children }) => {
             ...user,
         };
 
-        setUsers((currUsers) => [...currUsers, newUser]);
+        try {
+            const response = await fetch(
+                'http://localhost:5000/customers/create',
+                {
+                    method: 'POST',
+                    body: JSON.stringify(newUser),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user');
+            }
+
+            const responseUser = await response.json();
+            setUsers((currUsers) => [...currUsers, responseUser]);
+        } catch (error) {
+            console.log('Error adding user: ', error);
+        }
     };
 
     return (
