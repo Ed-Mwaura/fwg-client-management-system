@@ -8,7 +8,7 @@ export const UsersProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // fetch users from backend upon component mount
+    // fetch users from backend upon component mount. Runs only once upon component mount
     useEffect(() => {
         const getCustomers = async () => {
             try {
@@ -34,7 +34,7 @@ export const UsersProvider = ({ children }) => {
         const newUserId =
             users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1;
         const newUser = {
-            id: newUserId, // id is not part of user object. I compute it based on existing object, then add to user object
+            id: newUserId, // id is not part of user object. Compute based on existing object, then add to user object
             ...user,
         };
 
