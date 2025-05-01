@@ -39,7 +39,7 @@ const CreateUserPage = () => {
         <form onSubmit={handleSubmit}>
             <div className="container">
                 <div className="header">
-                    <div className="text">Create awesome user</div>
+                    <div className="text">Add new customer</div>
                     <div className="underline"></div>
                 </div>
 

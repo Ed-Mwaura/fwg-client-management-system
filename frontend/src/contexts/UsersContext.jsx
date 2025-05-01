@@ -21,8 +21,10 @@ export const UsersProvider = ({ children }) => {
 
     // add new users
     const addUser = (user) => {
+        const newUserId =
+            users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1;
         const newUser = {
-            id: users.length + 1, // id is not part of user object. I compute it based on existing object, then add to user object
+            id: newUserId, // id is not part of user object. I compute it based on existing object, then add to user object
             ...user,
         };
 
