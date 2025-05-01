@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUsersData } from '../../hooks/useUsers';
 
 const UserDetailsCardRight = ({ user }) => {
+    const { deleteUser } = useUsersData();
+    const navigate = useNavigate();
+
+    const handleDelete = () => {
+        deleteUser(user.id);
+        navigate('/');
+    };
     return (
         <>
             <div className="user-div-right">
@@ -35,7 +43,7 @@ const UserDetailsCardRight = ({ user }) => {
                     <Link to="/" className="back-btn">
                         Back
                     </Link>
-                    <Link to="/" className="delete-btn">
+                    <Link to="/" onClick={handleDelete} className="delete-btn">
                         Delete
                     </Link>
                 </div>
